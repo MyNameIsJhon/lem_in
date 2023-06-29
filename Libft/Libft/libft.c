@@ -643,6 +643,8 @@ int ft_atoi(char *str)
     int neg = 1;
     int nb = 0;
 
+    if(!str)
+        return 0;
     while(str[x] == '\t' || str[x] == '\v' || str[x] == '\n'||str[x] == '\r' || str[x] == '\f' || str[x] == ' ')
         x++;
     while(str[x] == '-' || str[x] == '+')

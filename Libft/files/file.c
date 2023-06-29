@@ -141,11 +141,11 @@ int file_2_lst(t_list **alst, char *path)
     if(!(file = ft_fopen(path, O_RDONLY)))
         return 0;
     
-    ft_fget_next_line(file, &line);
+    ft_get_next_line(file->fd, &line);
     lst = ft_lstnew((char*) ft_strdup(line));
     free(line);
 
-    while(ft_fget_next_line(file, &line))
+    while(ft_get_next_line(file->fd, &line))
     {
         ft_lstadd_back(&lst, ft_lstnew((char*) ft_strdup(line)));
         free(line);
