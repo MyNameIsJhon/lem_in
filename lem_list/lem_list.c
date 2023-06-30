@@ -58,8 +58,13 @@ lem_p *lem_name_searcher_point(lem_p **alemp, char *str)
     return lemp;
 }
 
+
 void set_pont(lem_p *pont_a, lem_p *pont_b)// a faire
 {
+    lem_p **pont_tab;
+    lem_p *pont_bis = NULL;
+
+    //à finir
 
 }
 
