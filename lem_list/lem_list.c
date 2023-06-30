@@ -43,4 +43,26 @@ void lem_add_back(lem_p **alemp, lem_p *new)
     curs->next = new;
     new->next = NULL;
 }
+void ft_lemp_clearall(lem_p **alemp, void (*f)(void*))
+{
+    lem_p *curr;
+    lem_p *tmp;
+
+    int i = 0;
+
+    if(!alemp || !f)
+        return;
+    
+    curr = *alemp;
+
+    while(curr)
+    {
+        tmp = curr;
+        f(curr->name);
+        curr = curr->next;
+        free(tmp);
+        i++;
+    }
+    *alemp = NULL;
+}
 
