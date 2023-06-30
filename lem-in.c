@@ -50,8 +50,6 @@ lem_p *recup_lempoints(t_list **alst) //not finish
 
     size_t i = 0;
 
-    getchar();
-
     while(lst != NULL)
     {
         astr = ft_strsplit((const char*) lst->content, ' ');
@@ -76,6 +74,40 @@ lem_p *recup_lempoints(t_list **alst) //not finish
     }
 
     return lemp;
+}
+
+void lemp_connection(lem_p **alemp, t_list **alst)
+{
+    t_list *lst = *alst;
+    char **astr = NULL;
+
+    lem_p *lemp_search_a = NULL;
+    lem_p *lemp_search_b = NULL;
+
+    size_t i = 0;
+
+    while(lst != NULL)
+    {
+        astr = ft_strsplit((const char*) lst->content, '-');
+
+        if(astr[1] != NULL)
+        {
+            if(!(lemp_search_a =  lem_name_searcher_point(alemp, astr[0])))
+            {
+                ft_printf("you enter a bad way connection : %s", astr[0]);
+                return;
+            }
+            if(!(lemp_search_b =  lem_name_searcher_point(alemp, astr[1])))
+            {
+                ft_printf("you enter a bad way connection : %s", astr[1]);
+                return;
+            }
+
+            i++; 
+        }
+        lst = lst->next;
+        ft_free_strsplit(astr);
+    }
 }
 
 int main(int argc, char **argv)

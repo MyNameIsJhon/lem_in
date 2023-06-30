@@ -43,6 +43,26 @@ void lem_add_back(lem_p **alemp, lem_p *new)
     curs->next = new;
     new->next = NULL;
 }
+
+lem_p *lem_name_searcher_point(lem_p **alemp, char *str)
+{
+    lem_p *lemp = *alemp;
+
+    while(lemp)
+    {
+        if(ft_strcmp(lemp->name, str) == 0)
+            return lemp;
+        lemp = lemp->next;
+    }
+
+    return lemp;
+}
+
+void set_pont(lem_p *pont_a, lem_p *pont_b)// a faire
+{
+
+}
+
 void ft_lemp_clearall(lem_p **alemp, void (*f)(void*))
 {
     lem_p *curr;
