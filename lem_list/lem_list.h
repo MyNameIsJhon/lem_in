@@ -12,7 +12,6 @@ typedef struct lem_points{
     size_t level;
 
     struct lem_points **pont; //ici seront tout les ponts disponibles sous formes de tableau de strings
-    struct lem_points **used_pont;
     struct lem_points *next;
 
 }lem_p;

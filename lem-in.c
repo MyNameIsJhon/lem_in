@@ -127,7 +127,7 @@ int main(int argc, char **argv)
 
     lemp_connection(&lemp, &lst);
 
-    ft_printf("%s \n", lemp->pont[0]->name);
+    ft_printf("%s \n", lemp->next->pont[0]->name);
 
     ft_lemp_clearall(&lemp, &free);
     

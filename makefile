@@ -3,7 +3,7 @@ CFLAGS =-I/usr/include -g
 LDFLAGS = 
 EXEC =minishell
 
-INCLUDES = -I ./Libft/Libft -I ./Libft/List -I ./Libft -I Libft/files/ -I ./lem_list
+INCLUDES = -I ./Libft/Libft -I ./Libft/List -I ./Libft -I Libft/files/ -I ./lem_list -I ./alg_in
 
 SRC = ./Libft/Libft/libft.c \
 		./Libft/Libft/ft_strsjoin.c \
@@ -12,11 +12,13 @@ SRC = ./Libft/Libft/libft.c \
 		./Libft/files/file.c \
 		./Libft/get_next_line.c \
 		./lem_list/lem_list.c \
+		./alg_in/alg_in.c \
 		./lem-in.c
 
 HEADS = ./Libft/Libft/libft.h \
 		./Libft/List/list.h \
 		./Libft/files/file.h \
+		./alg_in/alg_in.h \
 		./lem_list/lem_list.h 
 
 		
