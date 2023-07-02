@@ -21,6 +21,7 @@ lem_p *new_lem_point(size_t x, size_t y, char *name, int stoend);
 lem_p *lem_last(lem_p *lemp);
 void lem_add_back(lem_p **alemp, lem_p *new);
 lem_p *lem_name_searcher_point(lem_p **alemp, char *str);
+void set_pont(lem_p *lem_a, lem_p *lem_b);
 void ft_lemp_clearall(lem_p **alemp, void (*f)(void*));
 
 

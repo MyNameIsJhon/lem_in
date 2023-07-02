@@ -16,6 +16,7 @@ lem_p *new_lem_point(size_t x, size_t y, char *name, int stoend)
     lst->y = y;
     lst->name = ft_strdup(name);
     lst->startorend = stoend;
+    lst->pont = NULL;
 
     lst->next = NULL;
 
@@ -58,15 +59,49 @@ lem_p *lem_name_searcher_point(lem_p **alemp, char *str)
     return lemp;
 }
 
-
-void set_pont(lem_p *pont_a, lem_p *pont_b)// a faire
+size_t pont_len(lem_p **pont)
 {
-    lem_p **pont_tab;
-    lem_p *pont_bis = NULL;
+    size_t i = 0;
 
-    //à finir
-
+    if(!(pont))
+        return 0;
+    while(pont[i] != NULL)
+        i++;
+    return i;
 }
+
+void set_pont(lem_p *lem_a, lem_p *lem_b)
+{
+    size_t i = 0; 
+    lem_p **pont_bis;
+
+    size_t pt_len = 0;
+
+    if (lem_a->pont == NULL)
+    {
+        lem_a->pont = (lem_p**) malloc(sizeof(lem_p*) * 2);
+        lem_a->pont[0] = lem_b;
+        lem_a->pont[1] = NULL;
+    }
+    else
+    {
+        pt_len = pont_len(lem_a->pont);
+        pont_bis = (lem_p**) malloc(sizeof(lem_p*) * (pt_len + 2));
+        
+        while (i < pt_len)
+        {
+            pont_bis[i] = lem_a->pont[i];
+            i++;
+        }
+
+        pont_bis[i] = lem_b;
+        pont_bis[i+1] = NULL;
+        free(lem_a->pont);
+
+        lem_a->pont = pont_bis;
+    }
+}
+
 
 void ft_lemp_clearall(lem_p **alemp, void (*f)(void*))
 {

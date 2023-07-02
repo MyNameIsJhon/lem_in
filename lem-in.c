@@ -103,6 +103,9 @@ void lemp_connection(lem_p **alemp, t_list **alst)
                 return;
             }
 
+            set_pont(lemp_search_a, lemp_search_b);
+            set_pont(lemp_search_b, lemp_search_a);
+
             i++; 
         }
         lst = lst->next;
@@ -121,6 +124,10 @@ int main(int argc, char **argv)
     lems = lem_size(&lst);
 
     lemp = recup_lempoints(&lst);
+
+    lemp_connection(&lemp, &lst);
+
+    ft_printf("%s \n", lemp->pont[0]->name);
 
     ft_lemp_clearall(&lemp, &free);
     
