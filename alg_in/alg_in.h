@@ -3,7 +3,7 @@
 
 typedef struct lem_algo{
 
-    lem_t **way;
+    lem_p **way;
     struct lem_algo *next;
     size_t counter;
 
