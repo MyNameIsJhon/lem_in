@@ -88,14 +88,28 @@ lem_al *lem_add_way(lem_p *way)
     return path_finder;
 }
 
-lem_al *lem_finder_lastway()
+lem_al *lem_finder_lastway(lem_al **apath_finder)
 {
+    lem_al *path_finder = NULL;
+
+
+    if(!(*apath_finder))
+        return NULL;
+    while(path_finder->next != NULL)
+        path_finder = path_finder->next;
     
+    return path_finder;
 }
 
 void lem_add_wayback(lem_al **apath_finder, lem_al *new)
 {
+    lem_al *path_finder = NULL;
 
+    if(!(*apath_finder))
+        return;
+    path_finder = lem_finder_lastway(apath_finder);
+
+    path_finder->next = new;    
 }
 
 lem_al *lem_find_bestway(lem_p **alemp, lem_al **apath_finder) //configurer sur NULL si aucune sources de chemin principale
@@ -115,10 +129,7 @@ lem_al *lem_find_bestway(lem_p **alemp, lem_al **apath_finder) //configurer sur 
     if(!(end_lem = lem_end_searcher(alemp)))
         return NULL;
     
-    set_pont(path_finder->way, start_lem)
-
-    if()
-
+    
 
 
 }
