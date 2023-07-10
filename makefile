@@ -1,7 +1,7 @@
 CC =gcc
 CFLAGS =-I/usr/include -g 
 LDFLAGS = 
-EXEC =minishell
+EXEC =lem_in
 
 INCLUDES = -I ./Libft/Libft -I ./Libft/List -I ./Libft -I Libft/files/ -I ./lem_list -I ./alg_in
 

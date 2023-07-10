@@ -3,6 +3,7 @@
 #include "libft.h"
 #include "list.h"
 #include "lem_list.h"
+#include "alg_in.h"
  #include <fcntl.h>
 
 typedef struct lem_s{
@@ -127,7 +128,7 @@ int main(int argc, char **argv)
 
     lemp_connection(&lemp, &lst);
 
-    ft_printf("%s \n", lemp->next->pont[0]->name);
+    ft_printf("%s \n", lemp->name);
 
     ft_lemp_clearall(&lemp, &free);
     
