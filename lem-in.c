@@ -4,7 +4,7 @@
 #include "list.h"
 #include "lem_list.h"
 #include "alg_in.h"
- #include <fcntl.h>
+#include <fcntl.h>
 
 typedef struct lem_s{
 
@@ -118,19 +118,20 @@ int main(int argc, char **argv)
 {
     t_list *lst = NULL;
     lem_t lems; // taille tableau
-    lem_p *lemp = NULL;
+    lem_p *lemp_map = NULL;
+
 
     file_2_lst(&lst, "./fourmiliere.txt");
 
     lems = lem_size(&lst);
 
-    lemp = recup_lempoints(&lst);
+    lemp_map = recup_lempoints(&lst);
 
-    lemp_connection(&lemp, &lst);
+    lemp_connection(&lemp_map, &lst);
 
-    ft_printf("%s \n", lemp->name);
+    ft_printf("%s \n", lemp_map->next->next->pont[1]->name);
 
-    ft_lemp_clearall(&lemp, &free);
+    ft_lemp_clearall(&lemp_map, &free);
     
     ft_lstclearall(&lst, &free);
 }

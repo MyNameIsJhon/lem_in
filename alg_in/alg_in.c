@@ -3,86 +3,81 @@
 #include "lem_list.h"
 #include "alg_in.h"
 
-size_t lem_waylen(lem_p **way)
+lem_fi *lem_newfinder(lem_p *point)
+{
+    lem_fi *finder;
+
+    if(!point)
+        return NULL;
+    if(!(finder = (lem_fi*) malloc(sizeof(lem_fi))))
+        return NULL;
+
+    finder->lem_point = point;
+    finder->next = NULL;
+
+    return finder;
+}
+
+size_t lem_len_afinder(lem_fi **afinder)
 {
     size_t i = 0;
 
-    if(!way)
-        return 0;
-    while(way[i++] != NULL)
-        i++;
+    while(afinder[i] != NULL)
+        ++i;
     return i;
-
 }
 
-void set_new_way(lem_p **way, lem_p *lemp)
+lem_fi *lem_last_finder(lem_fi **afinder)
 {
     size_t i = 0;
-    lem_p **way_bis = NULL;
 
-    size_t waylen = NULL;
-
-    if(!way || !lemp)
-        return;
-
-    waylen = lem_waylen(way);
-
-    if(!(way_bis = (lem_p**) malloc(sizeof(lem_p*) * waylen + 2)))
-        return;
-
-    while(way[i])
-    {
-        way_bis[i] = way[i];
-        i++;
-    }
-    free(way);
-
-    way_bis[i] = lemp;
-    way_bis[i+1] = NULL;
-
-    i = 0;
-
-    if(!(way = (lem_p**) malloc(sizeof(lem_p*) * waylen + 2)))
-        return;
-
-    while(way_bis[i])
-    {
-        way[i] = way_bis[i];
-        i++;
-    }
-    free(way_bis);
-
-    way[i] = 0;
-
+    while(afinder[i] != NULL)
+        ++i;
+    return afinder[i-1];
 }
 
-lem_p **way_cp(lem_p **way)
+void lem_addbackfinder(lem_fi **afinder, lem_fi *finder)
 {
-    lem_p **new = NULL;
-    size_t waylen = 0;
+    lem_fi *curs = NULL;
 
+    if(!(*afinder) || !finder)
+        return;
+    
+    curs = lem_last_finder(afinder);
+
+    curs->next = finder;
+}
+
+int lem_dupli_afinder(lem_fi **afinder)
+{
+    lem_fi *dup = NULL;
+    size_t afinder_len = 0;
+
+    if(!(*afinder))
+        return NULL;
+    
+    
+}
+
+void lem_afinder_newtab(lem_fi **afinder, lem_fi **dup_afinder, )
+{
+    size_t afinder_len = 0;
     size_t i = 0;
 
-    if(!way)
-        return NULL;
+    if(!afinder)
+        return;
+    
+    afinder_len = lem_len_afinder(afinder);
 
-    waylen = lem_waylen(way);
-
-    if(!(new = (lem_p**) malloc(sizeof(lem_p*) * (waylen + 1))))
-        return NULL;
-    while(way[i])
+    if(!(dup_afinder = (lem_fi**) malloc(sizeof(lem_fi*) * (afinder_len + 2))))
+        return;
+    while(afinder[i] != NULL)
     {
-        new[i] = way[i];
+        dup_afinder[i] = afinder[i];
         i++;
     }
-    new[i] = NULL;
 
-    return new;
+    dup_afinder[i] = ;
+
 }
 
-lem_fi *finder_new_pathlist(lem_p **way)
-{
-    lem_fi* finder = NULL;
-
-    finder = NULL;
-}
