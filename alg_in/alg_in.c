@@ -70,10 +70,9 @@ void lem_free_finder(t_list **finder)
 
     while(finder[i] != NULL)
     {
-        free(finder[i]);
+        ft_lstclear(&finder[i]);
         ++i;
     }
-    free(finder[i]);
 }
 
 void lem_new_way(t_list **finder, t_list *way_2_cp)
@@ -90,11 +89,17 @@ void lem_new_way(t_list **finder, t_list *way_2_cp)
         return;
     
     lem_finder_cp(finder, finder_cp);
+    finder_cp[finder_len-1] = ft_lstcp(&way_2_cp);
+    finder_cp[finder_len] = NULL;
     lem_free_finder(finder);
 
-    lemp = finder_cp[0]->content;
-
-    ft_printf("%s \n", lemp->pont[0]->name);
+    if(!(finder = (t_list**) malloc(sizeof(t_list*) * (finder_len + 1))))
+        return;
+    
+    lem_finder_cp(finder_cp, finder);
+    finder[finder_len] = NULL;
+    
+    lem_free_finder(finder_cp);
 }
 
 
@@ -112,9 +117,10 @@ t_list *lem_bestway_finder(lem_p *lemp_map)
     ft_lstadd_back(&finder[0], ft_lstnew(lem_start_finder(lemp_map)->pont[0]));
     finder[1] = NULL;
 
+    lem_new_way(finder, finder[0]);
 
     lemp = (lem_p*) finder[0]->content; 
 
-    lem_new_way(finder, finder[0]);
+    ft_printf("%s \n", lemp->name);
 
 }
