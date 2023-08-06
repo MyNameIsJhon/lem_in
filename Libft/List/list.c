@@ -171,3 +171,38 @@ char **ft_lst_to_argv(t_list **alst)
 
     return argv;
 }
+
+t_list *ft_lstcp(t_list **alst)
+{
+    t_list *lst = NULL;
+    t_list *new_lst = NULL;
+    t_list *new_node = NULL;
+    
+    if (!alst || !(*alst))
+        return NULL;
+    
+    lst = *alst;
+
+    new_lst = ft_lstnew(lst->content);
+
+    if (!new_lst)
+        return NULL;
+
+    lst = lst->next;
+
+    while (lst != NULL)
+    {
+        new_node = ft_lstnew(lst->content);
+
+        if (!new_node)
+        {
+            ft_lstclear(&new_lst);
+            return NULL;
+        }
+
+        ft_lstadd_back(&new_lst, new_node);
+        lst = lst->next;
+    }
+
+    return new_lst;
+}
