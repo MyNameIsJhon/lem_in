@@ -101,7 +101,23 @@ void lem_new_way(t_list ***finder, t_list *way_2_cp)
     
     lem_free_finder(finder_cp);
 
+}
 
+t_list *lem_turn_finder(t_list ***finder)
+{
+    size_t i = 0;
+    lem_p *lemp = NULL;
+    
+
+
+    while((*finder)[i] != NULL)
+    {
+        lemp = (*finder)[i]->content;
+
+
+        ++i;
+    }
+}
 
 t_list *lem_bestway_finder(lem_p *lemp_map)
 {

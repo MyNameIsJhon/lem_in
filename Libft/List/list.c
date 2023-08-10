@@ -206,3 +206,33 @@ t_list *ft_lstcp(t_list **alst)
 
     return new_lst;
 }
+
+t_list *ft_lst_finder_wnb(int POS, size_t nb, t_list **alst)
+{
+    t_list *lst = NULL;
+    size_t lst_len = 0;
+    unsigned int lst_pos = 0;
+
+    if(!(*alst))
+        return lst;
+
+    lst = *alst;
+
+    if(POS == 0)//équivalent à START
+    {
+        while(lst->next != NULL && nb-- >= 0)
+            lst = lst->content;
+    }
+    else if(POS == 1)
+    {
+        lst_len = ft_lstsize(&lst);
+        lst_pos = lst_len - nb;
+
+        while(lst_pos-- && lst != NULL)
+            lst = lst->next;
+    }
+    else
+        ft_pustr("vous avez introduis la mauvaise value\n");
+
+    return lst;
+}
