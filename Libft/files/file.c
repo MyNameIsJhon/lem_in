@@ -48,7 +48,7 @@ int ft_fget_next_line(FT_FILE *file, char **line)
     if (!file|| !line || access(file->path, R_OK) == (-1))
         return (-1);
 
-    char *str = (char*)malloc(sizeof(char) * (BUFF_SIZE + 1));
+    char *str = (char*)malloc(sizeof(char) * (FILE_BUFF_SIZE + 1));
 
     fd = file->fd;
 
@@ -56,7 +56,7 @@ int ft_fget_next_line(FT_FILE *file, char **line)
         return (-1);
 
 
-    while (i < BUFF_SIZE && read(fd, &c, 1) > 0)
+    while (i < FILE_BUFF_SIZE && read(fd, &c, 1) > 0)
     {
         str[i] = c;
         i++;

@@ -225,14 +225,14 @@ t_list *ft_lst_finder_wnb(int POS, size_t nb, t_list **alst)
     }
     else if(POS == 1)
     {
-        lst_len = ft_lstsize(&lst);
+        lst_len = ft_lstsize(lst);
         lst_pos = lst_len - nb;
 
         while(lst_pos-- && lst != NULL)
             lst = lst->next;
     }
     else
-        ft_pustr("vous avez introduis la mauvaise value\n");
+        ft_putstr("vous avez introduis la mauvaise valeur\n");
 
     return lst;
 }

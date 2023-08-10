@@ -1,6 +1,8 @@
 #ifndef LIST 
 #define LIST LIST
 
+#define WNB_START 0
+#define WNB_STOP 1
 
 typedef struct  s_list
 {
@@ -20,5 +22,6 @@ void ft_lstiter(t_list *lst, void (*f)(void*));
 char *ft_listtostr(t_list **alst, char *str);
 char **ft_lst_to_argv(t_list **alst);
 t_list *ft_lstcp(t_list **alst);
+t_list *ft_lst_finder_wnb(int POS, size_t nb, t_list **alst);
 
 #endif

@@ -129,7 +129,6 @@ int main(int argc, char **argv)
 
     lemp_connection(&lemp_map, &lst);
 
-    ft_printf("%s \n", lemp_map->next->next->pont[1]->name);
     lem_bestway_finder(lemp_map);
 
     ft_lemp_clearall(&lemp_map, &free);

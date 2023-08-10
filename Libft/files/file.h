@@ -10,7 +10,7 @@
 #define BUFF_POS_SAVE 1
 #define BUFF_POS_UNSAVE 0
 
-#define BUFF_SIZE 200 //afin de géré fget_next_line
+#define FILE_BUFF_SIZE 200 //afin de géré fget_next_line
 
 
 typedef struct FT_FILE{
