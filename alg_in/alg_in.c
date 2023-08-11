@@ -164,11 +164,29 @@ void lem_turn_finder(t_list ***finder)
     ft_lstclear(&way_cp);
 }
 
+t_list *lem_finder_verificator(t_list **finder)
+{
+    lem_p *lemp = NULL;
+    size_t i = 0;
+
+    while(finder[i] != NULL)
+    {
+        lemp = ft_lstlast(finder[i])->content;
+
+        if(lemp->startorend == 2)
+            return finder[i];
+        i++;
+    }
+
+    return NULL;
+}
+
 t_list *lem_bestway_finder(lem_p *lemp_map)
 {
     t_list **finder;
     lem_p *lemp = NULL;
     size_t i = 0;
+    t_list *result = NULL;
 
     if(!lemp_map)
         return NULL;
@@ -178,13 +196,13 @@ t_list *lem_bestway_finder(lem_p *lemp_map)
     finder[0] = ft_lstnew(lem_start_finder(lemp_map));
     finder[1] = NULL;
 
-    while(i < 5)
+    while(i < 1000 && (result = lem_finder_verificator(finder)) == NULL)
     {
         lem_turn_finder(&finder);
         i++;
     }
 
-    lemp = (lem_p*) finder[2]->next->content; 
+    lemp = result->content; 
 
     ft_printf("%s \n", lemp->name);
 
